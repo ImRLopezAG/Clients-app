@@ -1,6 +1,5 @@
 import 'package:client/components/components.dart';
 import 'package:client/layouts/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -37,7 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _deleteClient(int id, BuildContext context) async {
     try {
-      CupertinoAlertDialog dialog = CupertinoAlertDialog(
+      final AlertDialog alert = AlertDialog(
+        title: const Text('Delete Client'),
         content:
             Text('Are you sure want to delete the client with the id" $id'),
         actions: [
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       );
 
-      dialog.build(context);
+      alert.build(context);
 
       setState(() {
         _clients.removeAt(id);
